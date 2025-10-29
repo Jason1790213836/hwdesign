@@ -1,7 +1,7 @@
 ---
 title: Creating the Vivado Project
 parent: Getting started
-nav_order: 1
+nav_order: 3
 has_children: false
 ---
 
