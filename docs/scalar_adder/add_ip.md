@@ -1,11 +1,11 @@
 ---
-title: Creating the Vitis IP
+title: Addding the Vitis IP 
 parent: Getting started
 nav_order: 3
 has_children: false
 ---
 
-# Adding the Vitis IP
+# Adding the Vitis IP to the FPGA Project
 We next need to add the IP to the Vivado project. 
 
 ## Locating the IP folder
