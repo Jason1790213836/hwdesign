@@ -44,6 +44,13 @@ cp "$bitfile" "$project_dir/overlay/${base}.bit"
 cp "$hwhfile" "$project_dir/overlay/${base}.hwh"
 cp "$tclfile" "$project_dir/overlay/${base}.tcl"
 
+# Print file info
+echo "Source file info:"
+for f in "$bitfile" "$hwhfile" "$tclfile"; do
+    echo "  $f"
+    stat --format="    Last modified: %y" "$f"
+done
+
 echo "Overlay files copied to: $project_dir/overlay/"
 echo "  ${base}.bit"
 echo "  ${base}.hwh"

@@ -12,13 +12,13 @@ and export the IP so that we can use it in Vivado.
 ## Creating the Vitis HLS Project
 
 * Launch Vitis (see the [installation instructions]({{ site.baseurl }}/docs/installation.md#launching-vitis))
-* Select `Open Workspace`.  Go to the directory `fpgademos\scalar_adder`.  This is where we will put the workspace.  `Vitis_HLS` will reopen.
-* Select `Create component->Create empty HLS component`.  You will walk through the following six steps:
-    * For `Name and location`, select component name as `scalar_add_vitis`
-    * Set the `Configuration file` select `Empty File` which is the default
-    * In `Source Files`, select top function to `add`
-    * In the `Hardware` tab, you will need to select the hardware you are targetting.  Select `Part`.  Then for family, select `zynquplusRFSoC`.  You can use the part numbers to select the remaining options.  In my case, the packages is `ffvg1517`.  The speed grade is `-2` and the Temp grade is `E`.  You should see your part.
-    * In the `Settings` tab, I kept all defaults, but later will change the clock speed
+* Select **Open Workspace**.  Go to the directory `fpgademos\scalar_adder`.  This is where we will put the workspace.  `Vitis_HLS` will reopen.
+* Select **Create component->Create empty HLS component**.  You will walk through the following six steps:
+    * For **Name and location**, select component name as `scalar_add` and the location as `fpgademos\scalar_adder\scalar_add_vitis`
+    * Set the **Configuration file** select **Empty File** which is the default
+    * In **Source Files**, select top function to `add`
+    * In the **Hardware** tab, you will need to select the hardware you are targetting.  Select **Part** and search for the FGPA part used in [building the Vivado project](./vivado_build.md).
+    * In the **Settings** tab, I kept all defaults, except I set the clock speed to either `250MHz` or `300MHz`.
 * Now you should have an empty project.
 * Sometimes the part number was not correct.  To verify the selection of the part, on the `Flow` panel (left sidebar), go to the `C Synthesis` section and select the settings (gear box).
     * In the `General` tab, there is `part` number.  Set the part number to `xczu48dr-ffvg1517-2-e` or whatever the correct part number is 
@@ -51,11 +51,19 @@ Alternatively, you could have selected `New Source File` and created the file he
 ~~~
 
 ## Synthesizing and Building the Vitis IP
-* In the `FLOW` panel (left sidebar), select `C Simulation->Run`.  It should run with a result of 12
-* Still in the `FLOW` panel,  select `C synthesis->Run` 
-* Next in the `FLOW` panel, `Package->Run`.
-* The packaging will have created a directory of files containing the *IP* for the adder.  It will be located in `scalar_adder_vitis/scalar_add/add/hls/impl/ip`. 
-* Note that we do not need to run the `Implementation` step -- this is for creating standalone bitstreams, not ones that will be integrated into a larger FPGA project.
 
+* In the **FLOW** panel (left sidebar), select **C Simulation → Run**.  
+  It should run with a result of 12. This step simulates your C code to verify functional correctness before synthesis.
+
+* Still in the **FLOW** panel, select **C Synthesis → Run**.  
+  This step converts your C/C++ function into synthesizable RTL (Verilog/VHDL), targeting the specified FPGA part.
+
+* Next in the **FLOW** panel, select **Package → Run**.  
+  This wraps the synthesized RTL into a reusable IP block, complete with metadata and interface definitions.
+
+* The packaging will have created a directory of files containing the *IP* for the adder.  
+  It will be located in `scalar_adder_vitis/scalar_add/add/hls/impl/ip`.
+
+* Note that we do not need to run the **Implementation** step — this is for creating standalone bitstreams, not ones that will be integrated into a larger FPGA project.
 ---
 Go to [Adding the Vitis IP](./add_ip.md)

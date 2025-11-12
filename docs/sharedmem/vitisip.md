@@ -11,7 +11,7 @@ In the previous unit on [loop optimization]({site.root}/fpgademos/loopopt), we b
 
 ## Building the Vitis IP with a script
 * Navigate to `fpgademos/vector_mult/vmult_vitis`.
-* The script is located in `scripts/buildip.tcl`.  If you want you can change the unroll factor for the IP you want to build by modifying the line:
+* The script is located in `scripts/build_ip.tcl`.  If you want you can change the unroll factor for the IP you want to build by modifying the line:
 ~~~tcl
     # Set the desired unroll factor
     set uf 4
@@ -28,7 +28,7 @@ vitis-run --mode hls --tcl scripts/build_ip.tcl
 
 ## Building the IP with the Vitis GUI
 
-* Follow the instructions [loop optimization]({site.root}/fpgademos/loopopt) to build the Vitis IP project
+* Follow the instructions [loop optimization](/docs/loopopt) to build the Vitis IP project
 * In `include/vmult.h` set the parameters:
 ~~~C
 #define PIPELINE_EN 1  // Enables pipelining

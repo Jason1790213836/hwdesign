@@ -8,7 +8,7 @@ has_children: false
 # Initial Synthesis
 
 ## Understanding the loop
-We focus on our simple loop that, without the compiler directives (`#pragma` statements) is simply:
+We focus on our simple loop that, without the compiler directives (`#pragma` statements), is simply:
 ~~~C
 for (i=0; i < n; i++) {
     c_buf[i] = a_buf[i] * b_buf[i]
