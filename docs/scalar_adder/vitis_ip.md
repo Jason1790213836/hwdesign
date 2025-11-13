@@ -30,7 +30,7 @@ Then, get the FPGA part number for that processing system.
     * In the `General` tab, there is `part` number.  Set the part number to `xczu48dr-ffvg1517-2-e` or whatever the correct part number is.
 
 ## Creating the Vitis IP and Testbench Source files
-* In the directory `scalar_add_vitis/src/`, create the source C file, `scalar_add.cpp` describing the functionality for our "IP":
+* In the directory `scalar_add_vitis/src/`,  there is the main source C file, `scalar_add.cpp` describing the functionality for our "IP":
 ~~~c
     void add(int a, int b, int& c) {
         #pragma HLS INTERFACE s_axilite port=a
@@ -40,10 +40,11 @@ Then, get the FPGA part number for that processing system.
         c = a + b;
         }
 ~~~
-This file is already in the git repo, so you can skip this step if you are using the repo.
+This file is already in the git repo, so you do not need to write it.
+   * Recall, that in the settings, we stated that `add` is the **top** function.  This function is refering to the function `add` in this file.  It will define the inputs and outputs that we will see in the processing system.
 * In the SCALAR_ADD_VITIS explorer pane (left sidebar), right click **Sources** and select **Add Source File** and open `scalar_add.cpp`.   We have now added the file to our project.
 Alternatively, you could have selected **New Source File** and created the file here.
-* Next create a testbench. Generally, we place the testbenches in a separate directory, which in our case will be: `scalar_add_vitis/testbench`.   Tehe must follow the same name as the component with `tb_` as a prefix.  So, for this case the file will be  `tb_scalar_add.cpp` and located in the `scalar_add_vitis/testbench` directory:
+* Next create a testbench. Generally, we place the testbenches in a separate directory, which in our case will be: `scalar_add_vitis/testbench`.   Th filee must follow the same name as the component with `tb_` as a prefix.  So, for this case the file will be  `tb_scalar_add.cpp` and located in the `scalar_add_vitis/testbench` directory:
 ~~~c
     #include <iostream>
     void add(int a, int b, int& c);
@@ -58,17 +59,12 @@ Alternatively, you could have selected **New Source File** and created the file 
 
 ## Synthesizing and Building the Vitis IP
 
-* In the **FLOW** panel (left sidebar), select **C Simulation → Run**.  
-  It should run with a result of 12. This step simulates your C code to verify functional correctness before synthesis.
-
+* In the **FLOW** panel (left sidebar), select **C Simulation → Run**.  It should run with a result of 12. This step simulates your C code to verify functional correctness before synthesis.
 * Still in the **FLOW** panel, select **C Synthesis → Run**.  
   This step converts your C/C++ function into synthesizable RTL (Verilog/VHDL), targeting the specified FPGA part.
-
 * Next in the **FLOW** panel, select **Package → Run**.  
   This wraps the synthesized RTL into a reusable IP block, complete with metadata and interface definitions.
-
-* The packaging will have created a directory of files containing the *IP* for the adder.  
-  It will be located in `scalar_adder_vitis/scalar_add/add/hls/impl/ip`.
+* The packaging will have created a directory of files containing the *IP* for the adder.  It will be located in `scalar_adder_vitis/scalar_add/add/hls/impl/ip`.
 
 * Note that we do not need to run the **Implementation** step — this is for creating standalone bitstreams, not ones that will be integrated into a larger FPGA project.
 ---
