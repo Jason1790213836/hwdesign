@@ -1,13 +1,11 @@
 ---
 title: Building a Vitis HLS project
-parent: Software Set-Up
+parent: Vitis and Vivado
 nav_order: 3
 has_children: false
 ---
 
 # Building a Vitis HLS Project
-
-
 
 In this note, we describe how we organize Vitis projects and show how to build them using Vitis HLS.
 

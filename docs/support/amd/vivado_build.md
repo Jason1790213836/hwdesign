@@ -1,6 +1,6 @@
 ---
 title: Building a Vivado Project
-parent: Software Set-Up
+parent: Vitis and Vivado
 nav_order: 2
 has_children: false
 --- 

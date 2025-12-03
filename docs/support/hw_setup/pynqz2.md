@@ -1,6 +1,6 @@
 ---
 title: Setting up the Pynq-Z2 board
-parent:  Hardware Set-Up
+parent:  FPGA Boards
 nav_order: 1
 has_children: false
 ---

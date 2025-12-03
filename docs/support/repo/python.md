@@ -1,7 +1,7 @@
 ---
 title: Installing the python package
-parent: Software Set-Up
-nav_order: 5
+parent: GitHub Repository
+nav_order: 2
 has_children: false
 ---
 

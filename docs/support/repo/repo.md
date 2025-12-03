@@ -1,7 +1,7 @@
 ---
 title: Cloning the Repository
-parent: Software Set-Up
-nav_order: 4
+parent: GitHub Repository
+nav_order: 1
 has_children: false
 ---
 

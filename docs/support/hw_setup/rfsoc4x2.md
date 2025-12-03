@@ -1,6 +1,6 @@
 ---
 title: Setting up the RFSoC 4x2 board
-parent:  Hardware Set-Up
+parent:  FPGA Boards
 nav_order: 2
 has_children: false
 ---

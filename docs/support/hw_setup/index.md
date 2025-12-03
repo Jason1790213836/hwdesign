@@ -1,6 +1,6 @@
 ---
-title: Hardware Set-Up
-parent: Hardware and software Set-up
+title: FPGA Boards
+parent: Support Material
 nav_order: 2
 has_children: true
 ---

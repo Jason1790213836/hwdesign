@@ -1,6 +1,6 @@
 ---
 title: Getting IP connectivity
-parent: Hardware Set-Up
+parent: FPGA Boards
 nav_order: 3
 has_children: false
 ---
