@@ -8,27 +8,15 @@ has_children: false
 # Installing Vivado and Vitis 
 
 
-## Vitis and Vivado
-
-The two key pieces of software we will use in this class.  Both are from AMD and can be downloaded together:
-
-*  [**Vitis HLS** (High-Level Synthesis)](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vitis/vitis-hls.html) is a tool we will use to design the hardware accelerators of **Vitis IP** (IP = intellectual property).  We can write the specification for the IP in high-level language like  C, C++, or OpenCL, and Vitis HLS converts it automatically into optimized, lower-level **register transfer level** (RTL) specification for the hardware 
-* [**Vivado**](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html) is Xilinx / AMD’s FPGA design suite that lets you create, simulate, and synthesize digital circuits. It provides a graphical interface to build projects, configure hardware like the Zynq processor, and generate bitstreams for deployment on supported boards.We then integrate that IP into a larger FPGA designs in Vivado.
-In this class, we will integrate the Vitis IP into the larger Vivado FPGA project and deploy that onto the FPGA.
-
-Both Vitis and Vivado have free versions that are fine for this class.  But, to access them you will need to [create and AMD account](https://login.amd.com/).
-
-
 ## Selecting the version
 
-You **cannot use the latest version** of Vivado/Vitis. You must install a version that matches a valid **Board Support Package (BSP)** for your board:  At the time of writing, the current versions are:
+You may not be able use the latest version of Vivado/Vitis. You must install a version that matches a valid **Board Support Package (BSP)** for your board:  At the time of writing, the current versions are:
 
 * **RFSoC 4x2**:  Current version is 2024.1.  You can verify as follows.
    * Go to [Real Digital GitHub page](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
    * Look for files like `RFSoC4x2_2024_1.bsp` → this means you should install **Vivado/Vitis 2024.1**
 * **Pynq-Z2**:  Current version is 2025.1
-   * You can verify this setting in the [next step](./vivado_build.md) when you build the Vivado 
-   projet and attempt to select the board.  If the board is not an option, then you may have to 
+   * You can verify this setting when you try to [build the Vivado project](./vivado_build.md) attempt to select the board.  If the board is not an option, then you may have to 
    go to an earlier version. 
 
 ---
@@ -64,23 +52,6 @@ You **cannot use the latest version** of Vivado/Vitis. You must install a versio
     ./installLibs.sh
 ~~~
 
-## Launching Vivado in Linux
+---
 
-Once you have installed Vivado, it can launched as follows from any terminal window:
-
-* First`cd` to where Vivado is installed.  For the NYU machine, this is `/tools/Xilinx/Vivado/2024.1`
-* Run `source settings64.sh`
-* `cd` to the directory were you want to run the Vivado project.
-* Run `vivado` from the command line.
-* The Vivado gui should launch
-
-## Launching Vitis in Linux
-
-Launching Vitis follows almost the same sequence:
-
-* First `cd` to where Vitis is installed.  For the NYU machine, this is `/tools/Xilinx/Vitis_HLS/2024.1`
-* Run `source settings64.sh`
-* `cd` to the directory were you want to run the Vitis project.
-* Run `vitis_hls` from the command line.
-* The Vitis Unified IDE gui should launch
-
+Next:  Go [launching Vitis and Vivado](./lauching.md)
