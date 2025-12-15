@@ -43,7 +43,7 @@ instructions on deploying the hardware on one of two  FPGA platforms:
 The material is developed by:
 
 *  [Sundeep Rangan](https://wireless.engineering.nyu.edu/sundeep-rangan/), an expert in wireless communications and Director of [NYU Wireless](https://wireless.engineering.nyu.edu/),
-* [Siddharth Garg][Siddharth Garg](https://engineering.nyu.edu/faculty/siddharth-garg),
+* [Siddharth Garg](https://engineering.nyu.edu/faculty/siddharth-garg),
 an expert in machine learning, cyber-security, hardware design, and, most recently,
 AI for chip design.  He is the PI on the NSF grant 
 [*NRT: Chips for All: Empowering Researchers from Diverse Disciplines to Design Hardware*](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2345953) that supports this project.
