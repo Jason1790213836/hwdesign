@@ -7,12 +7,11 @@ has_children: true
 
 # Bus Basics and Memory‑Mapped Interfaces
 
-In the previous unit, we built standalone hardware modules.  
-To be useful, hardware must connect to other systems.
-
+In the previous unit, we built standalone hardware modules.
+But to be useful, hardware must connect to other systems.
 In this unit, we introduce **memory‑mapped interfaces**, focusing on a widely used, industry‑standard protocol called **AXI4‑Lite**. The hardware block we design will be referred to as the **accelerator** or **IP** (intellectual property), and it will connect to a **processing system**, typically a general‑purpose processor such as an ARM core.
 
-While the previous unit used SystemVerilog, in this unit we will design the IP using **High‑Level Synthesis (HLS)**. With HLS, we describe the behavior of our design in a high‑level language such as C or C++, and the tool generates the RTL for us. RTL provides fine‑grained control but is time‑consuming and challenging for beginners, whereas HLS lets us focus on algorithms while the tool handles low‑level hardware details.  
+While the previous unit used SystemVerilog, in this unit we will design the IP using **High‑Level Synthesis (HLS)**. With HLS, we describe the behavior of our design in a high‑level language such as C or C++, and the tool generates the RTL for us. RTL provides fine‑grained control but is time‑consuming and challenging for beginners, whereas HLS lets us focus on algorithms while the tool handles low‑level hardware details.
 We will use **Vitis HLS** from AMD, which provides built‑in support for AXI4‑Lite and other complex bus protocols.
 
 By completing this demo, you will learn how to:
