@@ -55,8 +55,8 @@ The tentative grading is:
 * Final (25%)
 * Design project (25%)
 
-In the design project, students will work in groups and build a complete 
-hardware for any task of their choices. 
+In the [design project](./project.md), students will work in groups and build a complete 
+hardware IP for any task of their choices. 
 
 ## Course Schedule
 The tenatitve schedule is given in the [course units page](../units/).
