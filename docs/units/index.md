@@ -10,7 +10,7 @@ has_children: true
 A tentative set of units is as follows.  I've only added a few units so far, but I am hoping to get done by the end of the semester,
 
 * Course Introduction
-    Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pptx) 
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pptx) 
     * [Software and hardware set-up](./setup/)
 * [Unit 1:  Basic digital Logic](./basic_logic)
     * [SystemVerilog Examples:  Simple scalar functions](https://github.com/sdrangan/hwdesign/tree/main/demos/basic_logic)
