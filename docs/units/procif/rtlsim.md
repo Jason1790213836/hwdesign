@@ -15,9 +15,8 @@ This step can be done after C Synthesis and C simulation, but before Packaging.
     * Open the workspace for the for the Vitis IP that you were using, which should be in `hwdesign/scalar_fun/scalar_fun_vitis`
 * In the **Flow panel** (left sidebar), find the **C/RTL Simulation** section
 * Select the settings (gear box) in the C/RTL Simulation:
-    * Select `cosim.trace.all` to `all`.  This setting will trace all the outputs.
-
-* Next select the ***C/RTL Simulation->Run**.  This command will execute a RTL-level simulation of the synthesized IP.
+    * Select **cosim.trace.all** to **all** or **port**  This setting will trace all the outputs or the signals at the port level.
+* Next select the **C/RTL Simulation->Run**.  This command will execute a RTL-level simulation of the synthesized IP.
 
 ## Extracting VCD Files
 

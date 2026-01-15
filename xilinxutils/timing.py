@@ -1,5 +1,6 @@
 # timing.py: Helper functions for timing analysis of Xilinx designs
 
+from matplotlib import patches
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -280,5 +281,88 @@ class TimingDiagram(object):
         ax.set_xlim(tmin, tmax)
         ax.set_ylim(0, ymax)
 
+        # Save axis and time range of the plot
+        self.ax = ax
+        self.tmin = tmin
+        self.tmax = tmax
+
 
         return ax
+    
+    def add_patch(
+            self,
+            sig_name : str | list[str],
+            ind : int | list[int] | None = None,
+            time : list[float] | None = None,
+            **kwargs):
+        """
+        Adds a colored patch to highlight a time interval for a specific signal.
+
+
+        Parameters
+        ----------
+        sig_name : str or [start_sig, end_sig]
+            Name of the signal to highlight.  If a list
+            of two signal names is provided, the patch
+            will span from the first signal to the second.
+        time : [t_start, t_end] or None
+            Time interval to highlight.  If None, the indices are used to 
+            determine the time interval.
+        ind : int or [start_ind, end_ind] or None
+            Index or indices of the time points to highlight.  If a single index is provided,
+            the patch will span from that index to the next index.  If None, the time parameter
+            must be provided.
+        **kwargs : keyword arguments
+            Additional keyword arguments passed to the patches.Rectangle function.
+            Common options include 'color' and 'alpha'.
+
+        Returns
+        -------
+        None
+        """
+
+        # Get the signal names
+        if isinstance(sig_name, list):
+            if len(sig_name) != 2:
+                raise ValueError("sig_name must be a string or a list of two strings.")
+            start_sig, end_sig = sig_name
+        else:
+            start_sig = sig_name 
+            end_sig = sig_name
+        if not start_sig in self.sig_info:
+            raise ValueError(f"Signal {start_sig} not found in timing diagram.")
+        if not end_sig in self.sig_info:
+            raise ValueError(f"Signal {end_sig} not found in timing diagram.")
+        
+        # Get the time values
+        use_ind = True
+        if ind is None:
+            if time is None or len(time) != 2:
+                raise ValueError("Either ind or time must be provided.")
+            t_start, t_end = time
+            use_ind = False
+        elif isinstance(ind, list):
+            if len(ind) != 2:
+                raise ValueError("ind must be an integer or a list of two integers.")
+            start_ind, end_ind = ind    
+        else:
+            start_ind = ind
+            end_ind = ind+1
+        if use_ind:
+            t_start = self.sig_info[start_sig].times[start_ind]
+            if end_ind >= len(self.sig_info[end_sig].times):
+                t_end = self.tmax
+            else:
+                t_end = self.sig_info[end_sig].times[end_ind]
+
+        # Get the vertical positions
+        ybot = self.ybot[start_sig]
+        ytop = self.ytop[end_sig]
+
+        # Add the patch
+        rect = patches.Rectangle(
+            xy=(t_start, ybot), width=(t_end - t_start), 
+            height=(ytop - ybot),
+            **kwargs)
+
+        self.ax.add_patch(rect)

@@ -25,7 +25,8 @@ Basic Digital Logic:  Solutions}
 \maketitle
 
 \begin{enumerate}
-\item \emph{Propagation delay}:  A signal $x$ has time-value change points
+\item \qtag{Propagation delay} 
+\emph{Propagation delay}:   A signal $x$ has time-value change points
 \[
     (10, 0), (20, 4), (30, 2)
 \]
@@ -33,7 +34,11 @@ where the time is in nanoseconds.  The signal is passed through
 a circuit that produces $y = 2x+1$ with a propagation delay of \SI{3}{ns}.
 What are the time-value change points of $y$?  Use $\text{x}$ for unknown values.
 
-\item \emph{Critical path}: Consider the following SystemVerilog code:
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+\item \qtag{Critical path} \emph{Critical path}: Consider the following SystemVerilog code:
 \begin{systemverilogcode}
   always_ff @(posedge clk) begin
       x1 <= 3*x1>>2 - 5*x>>3 + 7;
@@ -50,8 +55,11 @@ Assume that:
 \end{itemize}
 What is the critical path delay of this circuit?
 
+\begin{solution}
+Enter your solutions here.
+\end{solution}
 
-\item \emph{Sequential updates}:
+\item \qtag{Sequential updates} \emph{Sequential updates}:
 Consider the following SystemVerilog code:
 \begin{systemverilogcode}
   always_ff @(posedge clk) begin
@@ -65,8 +73,15 @@ Consider the following SystemVerilog code:
 \end{systemverilogcode}
 Starting from $(x,v)=(15,10)$, what are the values of $(x,v)$
 for the next 5 clock cycles?
+\begin{solution}
+Enter your solutions here.
+\end{solution}
 
-\item \emph{Splitting paths over multiple cycles}: Consider the following
+
+
+
+
+\item \qtag{Splitting paths} \emph{Splitting paths over multiple cycles}: Consider the following
 SystemVerilog code:
 \begin{systemverilogcode}
   always_comb begin
@@ -76,14 +91,14 @@ SystemVerilog code:
       end else begin
           a = 0;
       end
-      xsq = xreg*xreg>>4;
+      xsq = xreg*xreg>>2;
       y = xsq + w2*a + b2;
   end
   always_ff @(posedge clk) begin
       xreg <= x;
   end
 \end{systemverilogcode} 
-where \texttt{>>4} denotes a right shift by 4 bits (division by 16).
+where \texttt{>>2} denotes a right shift by 2 bits (division by 4).
 So, the code registers the input \texttt{x} into \texttt{xreg} on each clock cycle,
 and produces the output \texttt{y} in a single clock cycle based on the registered value.
 The circuit is to be syntheized with components:
@@ -105,7 +120,13 @@ to minimize the critical path delay.
 What is the critical path delay of the new circuit?
 \end{enumerate}
 
-\item \emph{Exponent}
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+
+
+\item \qtag{Exponent} \emph{Exponent}
 Suppose we wish to implement the function
 \[\
     y = x^i, 
@@ -118,9 +139,14 @@ The output should always be 2 cycles after the input,
 even if $i=0,1$ or $2$.  Use only one multiplication in 
 each clock cycle.  
 
-Hint:  This problem is a bit harder.
-You will need to use delay lines to store
-the input $x$ and exponent $i$.
+Hint:  You will need to use delay lines to store
+the input $x$ and exponent $i$.  This problem is a bit hard
+since it uses pipelining.  We will discuss pipelining in more detail
+later units.
+
+\begin{solution}
+Enter your solutions here.
+\end{solution}
 
 
 \end{enumerate}

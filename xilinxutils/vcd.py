@@ -1,3 +1,5 @@
+import re
+from sys import prefix
 import matplotlib.pyplot as plt
 import numpy as np
 from vcdvcd import VCDVCD
@@ -23,6 +25,9 @@ def binary_str_to_numeric(
     value : int | float
         Converted numeric value.
     """
+    # Check signal is binary having only '0' and '1'
+    if not re.fullmatch(r'[01]+', bin_str):
+        raise ValueError(f"Invalid binary string: {bin_str}")
 
     # Zero pad the binary string to the specified width
     bin_str = bin_str.zfill(wid)
@@ -169,7 +174,7 @@ class SigInfo(object):
         for v in self.values:
             d = str(v)  # Default is to  display original value
             num_value = 0
-            if not (v in {'x', 'X', 'z', 'Z'}):
+            if not (v in {'x', 'X', 'z', 'Z'}):                
                 num_value = binary_str_to_numeric(
                     v, self.numeric_type, self.wid)
                 d = self.numeric_fmt_str % num_value                    
@@ -210,7 +215,7 @@ class VcdParser(object):
             self,
             name : str,
             short_name : str | None = None,
-            numeric_type : str | None = None,
+            numeric_type : str = 'int',
             numeric_fmt_str : str | None = None):
         """ 
         Adds a signal to be processed
@@ -221,7 +226,7 @@ class VcdParser(object):
             Full name of the signal to add.
         short_name : str | None
             Short name to use for the signal.  If None, the last part of the full name is used.
-        numeric_type : str | None
+        numeric_type : str
             Numeric type of the signal ('int', 'uint', 'float').
         numeric_fmt_str : str | None
             Format string for displaying the numeric values.
@@ -240,16 +245,26 @@ class VcdParser(object):
                 return
         raise ValueError(f"Signal '{name}' not found in VCD.")
 
-    def add_saxi_signals(self):
+    def add_signals_prefix(self, prefix : str ='s_axi_ctrl'):
         """ 
-        Adds the s_axi_control signals to the signal list
+        Adds all signals with a prefix to sig_info.  If the signal is of the form:
+
+           *{prefix}_{short_name}  or *{prefix}.{short_name}
+
+        The signal will be added with short_name as the short name.
         """
-        prefix = 's_axi_control'
+        pattern = re.compile(re.escape(prefix) + r"[_\.]?(.*)", flags=re.IGNORECASE)
+
+        found = False
         for s in self.vcd.signals:
-            if prefix in s:
-                short_name = s.split(f"{prefix}_")[-1]
+            if prefix in s.lower():
+                m = pattern.search(s)
                 self.add_signal(s)
-                self.sig_info[s].short_name = short_name
+                self.sig_info[s].short_name = m.group(1)
+                print(f"Added signal with prefix '{prefix}': {s} as {m.group(1)}")
+                found = True
+        if not found:
+            print(f"No signals with prefix '{prefix}' found in VCD.")
        
     def add_clock_signal(
             self, 

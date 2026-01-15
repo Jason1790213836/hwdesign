@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath, amssymb, bm, cite, epsfig, psfrag}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{pgf,tikz}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{../../styles/course}
+
+
+\begin{document}
+
+\title{Introduction to Hardware Design\\
+Memory and Basic Processor Interfaces}
+\author{Profs. Sundeep Rangan, Siddharth Garg}
+\date{}
+
+\maketitle
+
+\begin{enumerate}
+\item \qtag{Sizing memory} \emph{Sizing memory}.  Suppose that a communications receiver
+receives data at a rate of \SI{1}{Gsps} (giga sample per second) from
+each antenna.  The receiver has 4 antennas and each sample is a complex
+number represented by 12 bits for the real part and 12 bits for the
+imaginary part (i.e., 24 bits per sample).
+
+\begin{enumerate}[label=(\alph*)]
+\item What is the total data rate in Gbps (giga bits per second) from
+  all antennas?
+\item Suppose there is a sample buffer of size \SI{8}{MB}.  How much time
+    (in milliseconds) can the buffer hold before it is full?
+\item Suppose that each memory can be written at a rate of \SI{400}{MHz}
+with a bus width of 64 bits.  How many such memories are needed to handle
+the data rate from part (a)?  Assume that you cannot split a
+sample across multiple memories and you cannot split the real or imaginary
+component of a sample ver multiple writes.
+\end{enumerate}
+
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+\item \qtag{FIR filter} \emph{FIR filter}:  
+Consider implementing an FIR filter
+or convolution.  An FIR filter takes an input signal $x[n]$, $n=0,\ldots,N-1$
+ and produces
+an output signal $y[n]$ via
+\[
+    y[n] = \sum_{k=0}^{K-1} h[k] x[n-k]
+\]
+where $h[0], \ldots, h[K-1]$ are the filter coefficients.  Suppose all values
+are 16-bit signed integers.  Assume the arrays are length
+$N=1000$ and the filter length is $K=32$.  
+
+\begin{enumerate}[label=(\alph*)]
+    \item What is the number of 32-bit words needed to store $x$, $y$ and $h$?
+    \item Suppose that the filter coefficients are stored in registers,
+    and each 32-bit word write takes 5 clock cycles to write.  How many 
+    clock cycles are needed to program the filter coefficients?
+    \item Suppose that FIR filter IP can run the filter operation for $N$
+    length vectors in $N+K$ clock cycles.  How many clock cycles are needed to
+    run the filter for length $N=1000$ vectors and $K=32$ filter coefficients?
+    \item If the processing requires programming the filter coefficients,
+    then running the filter, what percentage of the total time is spent
+    programming the filter coefficients?
+\end{enumerate}
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+
+\item \qtag{AXI4-Lite Write} \emph{AXI4-Lite Write}:  Suppose 
+a processor (master) writes to a hardware IP (slave) using the AXI4-Lite protocol.
+Assume the following AXI4-Lite write timing:
+\begin{itemize} 
+\item On cycle 1, the master asserts \texttt{AWVALID} and \texttt{WVALID} 
+with address on \texttt{AWADDR} and data on \texttt{WDATA}. 
+\item On cycle 2, the slave asserts \texttt{AWREADY}. 
+\item On cycle 3, the slave asserts \texttt{WREADY}. 
+\item There is a 2-cycle delay from the time \emph{both} the address 
+and data have been transferred to when the slave asserts \texttt{BVALID}. 
+\item There is a 1-cycle delay from the time \texttt{BVALID} is asserted to 
+when the master asserts \texttt{BREADY}. 
+\end{itemize}
+Answer the following questions based on the timing above:
+
+\begin{enumerate}[label=(\alph*)] 
+    \item On which cycle is the address transferred on the AW channel?
+    \item On which cycle is the data transferred on the W channel? 
+    \item On which cycle is \texttt{BVALID} asserted by the slave? 
+    \item On which cycle is \texttt{BREADY} asserted by the master? 
+    \item For each channel separately, on which cycle can the master first de-assert: 
+    \texttt{AWVALID} and \texttt{WVALID}? 
+    \item For each channel separately, on which cycle can the master first assert 
+    \texttt{AWVALID} and \texttt{WVALID} for the \emph{next} write transaction? 
+    If the master wants to start the next write with both \texttt{AWVALID} and 
+    \texttt{WVALID} high in the same cycle, what is the earliest such cycle? 
+\end{enumerate}
+
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+
+% ------------------------------------------------------------
+% AXI4-Lite Read Timing Problem (LaTeX Version)
+% ------------------------------------------------------------
+
+\item \qtag{AXI4-Lite Read} \emph{AXI4-Lite Read}:  
+A processor (master) performs a read from a hardware IP (slave) using the AXI4-Lite protocol.  
+The following timing behavior occurs:
+
+\begin{itemize}
+  \item Cycle 1: The master asserts \texttt{ARVALID} with the read address on \texttt{ARADDR}.
+  \item Cycle 2: The slave asserts \texttt{ARREADY}.
+  \item Cycle 3: The slave asserts \texttt{RVALID} with the read data on \texttt{RDATA}.
+  \item Cycle 4: The master asserts \texttt{RREADY}.
+  \item The slave has a 1-cycle latency from the time the address is transferred to the time it asserts \texttt{RVALID}.
+  \item The master has a 1-cycle delay from the time \texttt{RVALID} is asserted to the time it asserts \texttt{RREADY}.
+\end{itemize}
+
+Answer the following:
+
+\begin{enumerate}[label=(\alph*)]
+  \item On which cycle is the read address transferred?
+  \item On which cycle is the read data transferred?
+  \item On which cycle may the master de-assert \texttt{ARVALID}?
+  \item On which cycle may the slave de-assert \texttt{RVALID}?
+  \item On which cycle may the master begin the next read transaction (i.e., assert \texttt{ARVALID} for the next read)?
+\end{enumerate}
+
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+
+\item \qtag{IP interface}  \emph{IP interface}:  
+Suppose an IP implements the iterative update:
+\[
+    x[n+1] = f(x[n], a, b)
+\]
+where $f(x,a,b)$ is some known function, and $a$ and $b$ are constants.
+The IP is given an initial value $x[0]$ and returns the final value $x[N]$
+after a specified number of iterations $N$.
+Assume all values are 32-bit signed integers.
+
+\begin{enumerate}[label=(\alph*)]
+    \item You decide to write a Vitis HLS function to implement this IP.
+
+\begin{ccode}
+void diff_eq_solver(...)
+
+#pragma HLS INTERFACE s_axilite port=... bundle=CTRL_BUS
+// ...
+\end{ccode}
+
+What arguments would you include in the function, and what \#pragma HLS INTERFACE
+lines would you write?  You do \emph{not} need to write the body of the function.
+
+    \item Vitis HLS will automatically build the AXI4-Lite interface.
+Assuming it adds a 32-bit \texttt{AP\_CTRL} register, what is the register
+map for this IP?  Assume the base address is 0x00 and each register is
+32 bits wide.
+\end{enumerate}
+
+\begin{solution}
+Enter your solutions here.
+\end{solution}
+
+
+\end{enumerate}
+
+
+  \end{document}
+
