@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-parent: Course Units
+parent: Demos
 nav_order: 1
 has_children: true
 ---

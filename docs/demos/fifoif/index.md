@@ -1,6 +1,6 @@
 ---
 title: Command-Response FIFO Interface
-parent: Course Units
+parent: Demos
 nav_order: 5
 has_children: true
 ---

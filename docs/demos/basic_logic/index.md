@@ -1,6 +1,6 @@
 ---
 title: Basic Digital Logic
-parent: Course Units
+parent: Demos
 nav_order: 2
 has_children: true
 ---

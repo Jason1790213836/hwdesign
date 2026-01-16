@@ -1,6 +1,6 @@
 ---
 title: Shared Memory PS Interface
-parent: Course Units
+parent: Demos
 nav_order: 6
 has_children: true
 ---

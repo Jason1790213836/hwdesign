@@ -1,6 +1,6 @@
 ---
 title: Bus Basics and Memory‑Mapped Interfaces
-parent: Course Units
+parent: Demos
 nav_order: 3
 has_children: true
 ---
