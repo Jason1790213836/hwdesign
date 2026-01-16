@@ -59,7 +59,7 @@ In the [design project](./project.md), students will work in groups and build a 
 hardware IP for any task of their choices. 
 
 ## Course Schedule
-The tenatitve schedule is given in the [course units page](../units/).
+The tenatitve schedule is given in the [course units page](./units.md).
 
 
 ## Support
