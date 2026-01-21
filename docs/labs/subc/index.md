@@ -43,5 +43,5 @@ Before starting, copy the files in the `subc\partial` directory into the `subc` 
 
 ----
 
-Go to [algorithm theory and python implementation](theory.md)
+Go to [algorithm theory](theory.md)
 
