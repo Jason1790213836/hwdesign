@@ -16,9 +16,9 @@ python submit.py
 ```
 
 This program will look at the test vectors and validate that the tests have passed.
-The program will create a zip file `results.zip` with:
+The program will create a zip file `submission.zip` with:
 
-- `results.json`:  A JSON file with the test results
+- `submitted_results.json`:  A JSON file with the test results
 - `subc_divide.py`:  Your python implementation
 - `subc_divide.sv`:  Your SV implementation
 - `test_results/tv_python.csv` and `test_results/tv_sv.csv`:  The test vector files.
