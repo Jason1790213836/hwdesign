@@ -18,6 +18,8 @@ A tentative set of units is as follows.  I've only added a few units so far, but
 * Unit 2:  Numeric Representations
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pptx) 
     * [In-class exercise](../../units/unit02_numbers/numbers_inclass.ipynb)
+    <a href="https://colab.research.google.com/github/sdrangan/hwdesign/blob/main/units/unit02_numbers/numbers_inclass.ipynb" target="_blank">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> </a>
     * [Problems](../../units/unit02_numbers/prob/numbers.html)
 * Unit 3:  Bus basics and memory-mapped interfaces
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_procif/procif.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_procif/procif.pptx) 
