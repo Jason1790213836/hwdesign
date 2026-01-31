@@ -9,7 +9,7 @@ nav_sort: case_insensitive
 search_enabled: true
 
 # Markdown options
-markdown: kramdown
+markdown: kramdown  
 kramdown:
   input: GFM
 

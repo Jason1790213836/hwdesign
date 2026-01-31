@@ -95,6 +95,9 @@ end
                 Specifically, the input <code>x</code> should be registered in the first clock cycle,
                 and the output <code>y</code> should be produced in the second clock cycle.
                 Make sure that no clock cycle requires two or more multiplications that cannot be parallelized.
+                You do not need to include the module declaration, or declaration
+                of variables; just the
+                <code>always_ff</code> and <code>always_comb</code> blocks.
             </p>
         
     </div>
@@ -131,6 +134,8 @@ end
                 Specifically, register the input <code>x</code> on the first clock cycle,
                 and compute the output <code>y</code> two clock cycles later.
                 This requires introducing additional registers to store intermediate values.
+                You do not need to include the module declaration, or declaration
+                of variables; just the <code>always_ff</code> and <code>always_comb</code> blocks.
             </p>
         
     </div>
@@ -196,15 +201,17 @@ end
 
             <p>
                 where the exponent \(i\) is an integer in the set \(\{0,1,2,3\}\).
-                The input <code>x</code> and output <code>y</code> are signed short integers
+                The input <code>x</code> and output <code>y</code> are signed 32-bit integers
                 (you do not need to worry about overflow).
             </p>
 
             <p>
-                Write a SystemVerilog module that computes <code>y</code>.
+                Write SystemVerilog code that computes <code>y</code>.
                 The output should always be produced exactly <strong>two cycles</strong> after the input,
-                even when \(i = 0\), \(1\), or \(2\).
-                You must use only <strong>one multiplication per clock cycle</strong>.
+                even when \(i = 0\), \(1\), \(2\), or \(3\).
+                If two multiplications are in the same clock cycle, they must be parallelizable. 
+                You do not need to include the module declaration, or declaration
+                of variables; just the <code>always_ff</code> and <code>always_comb</code> blocks.
             </p>
 
             <p>
@@ -245,7 +252,8 @@ logic signed [31:0] xtest [0:3] = '{10, 20, -5, 7};
             <ul>
                 <li>On cycle 0, sets <code>rst = 1</code>, then de‑asserts it on the next cycle.</li>
                 <li>Starting on cycle 4, sets <code>x = xtest[0]</code> and prints the output <code>y</code> on cycle 8.</li>
-                <li>On cycle 9, sets <code>x = xtest[1]</code> and prints <code>y</code> on cycle 12.</li>
+                <li>On cycle 9, sets <code>x = xtest[1]</code> and prints <code>y</code> on cycle 13.</li>
+                <li>On cycle 14, sets <code>x = xtest[2]</code> and prints <code>y</code> on cycle 18.</li>
                 <li>Continue similarly for the remaining test inputs.</li>
             </ul>
 
