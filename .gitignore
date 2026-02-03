@@ -161,3 +161,6 @@ _minted*/
 # Ignore test vector files
 test_vectors
 test_vectors/*
+
+# Ignore extra directory
+extra/

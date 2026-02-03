@@ -42,6 +42,33 @@ Logic and logic vectors:
   x[15:8] // bits 8 through 15 of x (upper byte)
 \end{systemverilogcode}
 
+Addition
+
+\begin{systemverilogcode}
+  logic signed [15:0] a, b; // 16-bit integers
+  logic signed [15:0] c1;  // 16-bits
+  logic signed [16:0] c2;  // 17-bits
+
+  // May overflow
+  c1 = a + b;
+
+  // Still may overflow!
+  // a+b computed in 16-bits, then assigned to c2
+  c2 = a + b;
+
+  // No overflow
+  c2 = a;
+  c2 = c2 + b;
+\end{systemverilogcode}
+
+Better method
+\begin{systemverilogcode}
+  logic signed [15:0] a, b; // 16-bit integers
+  logic signed [16:0] aext = a; // extend a to 17-bits
+  logic signed [16:0] bext = b; // extend b to 17-bits
+  logic signed [16:0] c = aext + bext; // 17-bit result
+\end{systemverilogcode}
+
 
 Integers:
 
@@ -90,6 +117,7 @@ Operations:
 
 \begin{systemverilogcode}
   x << b    // Logical shift left by b bits
+  x <<< b   // Arithmetic shift left by b bits
   x >> b    // Logical shift right by b bits
   x >>> b   // Arithmetic shift right by b bits
 \end{systemverilogcode}
