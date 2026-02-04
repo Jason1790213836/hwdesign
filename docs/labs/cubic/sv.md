@@ -21,6 +21,9 @@ a1_s0 <= a1
 a2_s0 <= a2
 ```
 
+where we have added variables with an `_s0` prefix to note register values
+at the end of stage 0.
+
 - State 1:  
     - Compute the square and linear terms
     
@@ -80,20 +83,27 @@ Once you have selected the correct parameters,  the testbench can be run by usin
 sv_sim --source cubic.sv --tb tb_cubic.sv
 ```
 
-Note that if you are on the [NYU server](../../support/amd/nyu_remote.md), you will not have access
-to the `xilinxutils` package.  So you will have to run the command `sv_sim` directly.
-Assuming you cloned the `hwdesign` package in your home directory, run `sv_sim` as follows:
-
-```bash
-~/hwdesign/scripts/sv_sim --source cubic.sv --tb tb_cubic.sv
-```
-
-
-
 This will run the three steps in synthesizing and simulating the SV mdule.  The outputs will be stored in a CSV file, `test_outputs/tv_w16_f8_sv.csv`
 or `test_outputs/tv_w16_f12_sv.csv` depending on the choice of `FBITS`.
 
 You should see how many tests passed, and you can keep modifying the SV code until all test passed.
+
+## Running the Simulation on the NYU Server
+
+Note that if you are on the [NYU server](../../support/nyuremote/),
+you should follow the specialized [python instructions](../../support/nyuremote/python.md).
+In particular, follow those instructions to:
+- log into the server
+- clone the repository `hwdesign` to your home directory so it is at `~/hwdesign`
+- install the `uv` utility
+- create and activate a virtual environment
+- install the python package with `uv` in that environment.
+
+Once you have done these steps, you can run the script with
+
+```bash
+(hwdesign) uv run sv_sim --source cubic.sv --tb tb_cubic.sv
+```
 
 ## Verify the test outputs
 
@@ -106,11 +116,14 @@ python run_tests --tests sv_f12
 
 These commands will tests that the test vectors match.
 
-If you are running Vitis and Vivado on the [NYU machine](../../support/amd/nyu_remote.md),
-you will not be able to run `python run_tests.py` since the python installation on that machine
-is ancient and doesn't even the package `pandas`.  So, I suggest you copy the files above
-to your local machine and run the `python run_tests.py` command there.
+If you are running Vitis and Vivado on the [NYU machine](../../support/nyuremote/),
+you will need to follow the instructions for [setting up uv](../../support/nyuremote/python.md).
+Then, activate the `hwdesign` virtual environment and run:
 
+```bash
+uv run python run_tests --tests sv_f8 
+un run python run_tests --tests sv_f12 
+```
 
 
 Go to [submission](./submit.md)
