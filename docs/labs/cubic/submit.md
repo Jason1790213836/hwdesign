@@ -1,7 +1,7 @@
 ---
 title: Submitting the Lab
 parent: Cubic Fixed Poin
-nav_order: 3
+nav_order: 5
 has_children: true
 ---
 
@@ -15,6 +15,12 @@ run the python command:
 python run_tests.py --tests all --submit
 ```
 
+Or, if you are on the NYU server:
+
+```bash
+uv run python run_tests.py --tests all --submit
+```
+
 This program will look at the test vectors and validate that the tests have passed.
 The program will create a zip file `submission.zip` with:
 
@@ -24,10 +30,7 @@ The program will create a zip file `submission.zip` with:
 - `tb_cubic.sv`:  Your SV testbench implementation
 - `test_results/tv_....csv`:  Various test vectors
 
-Submit this zip folder on Gradescope on the lab assignment.  A Gradescope autograder will upload the grade. 
+Submit this zip folder on Gradescope on the lab assignment.  A Gradescope autograder will upload the grade.  If you are on the NYU server, you will need to copy the `submission.zip`
+file back to your local machine to submit.  
 
-If you are running Vitis and Vivado on the [NYU machine](../../support/amd/nyu_remote.md),
-you will not be able to run `python run_tests.py` since the python installation on that machine
-is ancient and doesn't even the package `pandas`.  So, I suggest you copy the files above
-to your local machine and run the `python run_tests.py` command there.
 
