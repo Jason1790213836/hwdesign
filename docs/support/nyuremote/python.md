@@ -10,7 +10,7 @@ The NYU EDA servers provide a system Python installation, but **`pip` is not ava
 To work around this, students should use **`uv`**, a modern, fast, user‑level Python package manager that installs entirely in your home directory.
 This suggestion was provided by the student Ashesh Kaji, so please thank him next time.
 
-`uv` is a drop‑in replacement for:
+**'`uv`** is a drop‑in replacement for:
 - `pip`
 - `virtualenv`
 - `pipx`
@@ -157,31 +157,4 @@ The NYU EDA servers:
 - Works on macOS, Windows, and Linux
 - Is significantly faster and more reliable than pip
 
----
-
-## 6. Summary of Commands
-
-```bash
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Ensure PATH is correct
-export PATH="$HOME/.local/bin:$PATH"
-
-# Create and activate a virtual environment
-uv venv
-source .venv/bin/activate
-
-# Install dependencies
-uv pip install -e .
-# or
-uv pip install -r requirements.txt
-
-# Run your code
-python your_script.py
-```
-
----
-
-This workflow is the simplest, safest, and most reliable way for students to use Python on the NYU EDA servers.
     

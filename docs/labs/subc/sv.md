@@ -83,6 +83,13 @@ Once you have done these steps, you can run the script with
 (hwdesign) uv run sv_sim --source subc_divide.sv --tb tb_subc_divide.sv
 ```
 
+## Running the Simulation with the Vivado GUI
+
+The above flow uses command line only.  If you prefer,
+you can follow the [instructions for using the Vivado GUI](../../support/amd/sv_build.md).
+Running the GUI will create the same files.  You can also edit your
+SystemVerilog files in the Vivado editor.
+
 ---
 
 Go to [submission](./submit.md)
