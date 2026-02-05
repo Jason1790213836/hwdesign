@@ -26,6 +26,7 @@ A tentative set of units is as follows.  I've only added a few units so far, but
         <a href="https://colab.research.google.com/github/sdrangan/hwdesign/blob/main/units/unit03_fixp/fixp_inclass.ipynb" target="_blank">
         <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> 
         </a> 
+    * [SystemVerilog Demo:  Fixed point implementation](../demos/fixp/)
     * [Problems](../../units/unit03_fixp/prob/fixp.html)
     * Lab:  [Fixed point implementation of a polynomial](../labs/cubic/)
 * Unit 4:  Bus Basics and Memory-Mapped Interfaces
