@@ -70,11 +70,15 @@ module cubic_fixed #(
         // TODO:  Compute the following intermediate values
         // x2_s1_next = ...  x squared term
         // ax1_s1_next = ...  a1*x + a0 term
-        
+         x2_s1_next=(x_s0*x_s0)>>>FBITS;
+ 	 ax1_s1_next=((a1_s0*x_s0)>>>FBITS)+a0_s0;	 
 
         // Stage 2:  Compute cubic term and final outputs
         // TODO:  Compute the following intermediate values
-        // ax2 = ...   a2*x^2 term
+          ax2 = (a2_s1*x2_s1)>>>FBITS;
+	  x3 = (x2_s1*x_s1)>>>FBITS;
+	  yfull = ax2+x3+ax1_s1;
+	  y  = sat(yfull);
         // x3  = ...   x^3 term
         // yfull = ...  sum of all terms
         // y = yfull truncated/saturated to WID bits
@@ -99,7 +103,19 @@ module cubic_fixed #(
             //  x_s0  <= ...
             //  a0_s0 <= ...
             // ...
-            
+	//stage 0
+        	x_s0 <=x;
+	    	a0_s0<=a0;
+		a1_s0<=a1;
+	        a2_s0<=a2;
+	//stage 1        
+	       a2_s1 <= a2_s0; // pass on
+       	       x_s1  <=	x_s0; // pass on
+	       x2_s1 <= x2_s1_next;
+	       ax1_s1 <= ax1_s1_next;
+	//stage 2
+	      
+	
 
             // TODO:  Stage 1:  Register stage 1 values
             //  a2_s1 <= ...
