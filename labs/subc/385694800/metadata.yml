@@ -1,0 +1,12 @@
+---
+:id: 385694800
+:submitters:
+- :name: Lixuan Xu
+  :email: lx2349@nyu.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2026-02-04 06:03:31.824527000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2026-02-03 22:03:31.824527000 Z
+:status: processed
+:score: 30.0
