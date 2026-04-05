@@ -31,15 +31,18 @@ A tentative set of units is as follows.  I've only added a few units so far, but
     * Lab:  [Fixed point implementation of a polynomial](../labs/cubic/)
 * Unit 4:  Bus Basics and Memory-Mapped Interfaces
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit04_procif/procif.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit04_procif/procif.pptx) 
-    * [Problems](../../units/unit04_procif/prob/procif.html)
     * [Vitis HLS Demo:  Simple AXI4-Lite interface](../demos/procif/) 
+    * Lab:  [Build a root solving accelerator in Vitis HLS](../labs/rootsolve/)
+    * [Problems](../../units/unit04_procif/prob/procif.html)
 * Unit 5:  FIFO and Streaming Interfaces
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit05_fifo/fifo.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit04_fifo/fifo.pptx) 
     * [Vitis HLS Demo: AXI4-Streaming FIFO interface](../demos/fifoif/)
-* Unit 6:  Timing Diagrams and Critical Path Analysis
-* Unit 7:  Burst Transfers and Loop Optimization
+    * [Problems](../../units/unit05_fifo/prob/fifo.html)
+* Unit 6:  Timing and Critical Path Analysis
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit05_fifo/fifo.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit04_fifo/fifo.pptx) 
+    * [Problems](../../units/unit06_timing/prob/timing.html)
+* Unit 7:  Pipelining and Loop Optimization
     * [Vitis HLS Demo: A pipelined vector multiplier](../demos/loopopt)
-* Unit 8:  FIR Filters
+* Unit 8:  Dataflow and Shared Memory architectures
 * Unit 9:  Systolic Arrays
 * Unit 10:  Multi-Threaded Control
-* Unit 11:  Dataflow and message-passing architectures
-* Unit 12:  Interfacing with high-speed sample 

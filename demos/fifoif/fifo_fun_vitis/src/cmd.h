@@ -1,9 +1,10 @@
-#ifndef C:\USERS\SDRAN\DOCUMENTS\REPOS\HWDESIGN\FIFOIF\FIFO_FUN_VITIS\SRC\CMD_H
-#define C:\USERS\SDRAN\DOCUMENTS\REPOS\HWDESIGN\FIFOIF\FIFO_FUN_VITIS\SRC\CMD_H
+#ifndef CMD_H
+#define CMD_H
 
 #include <hls_stream.h>
 #include <ap_int.h>
 #include <ap_axi_sdata.h>
+#include "../../../../xilinxutils/codegen/stream_utils.h"
 #include <string>
 #include <sstream>
 
@@ -35,29 +36,12 @@ public:
         constexpr int bus_bits = decltype(Tstream::data)::width;
         static_assert(bus_bits == 32, "Only 32-bit stream supported in Cmd::stream_write_32");
 
-        Tstream w0;
-        w0.data = 0;
-        w0.keep = -1;
-        w0.strb = -1;
-        w0.data.range(15, 0) = trans_id;
-        w0.last = false;
-        out.write(w0);
+        out.write(axi_word_range<Tstream>(trans_id, 15, 0, false));
 
-        Tstream w1;
-        w1.data = 0;
-        w1.keep = -1;
-        w1.strb = -1;
-        w1.data = a;
-        w1.last = false;
-        out.write(w1);
+        out.write(axi_word<Tstream>(a, false));
 
-        Tstream w2;
-        w2.data = 0;
-        w2.keep = -1;
-        w2.strb = -1;
-        w2.data = b;
-        w2.last = tlast;
-        out.write(w2);
+        out.write(axi_word<Tstream>(b, tlast));
+
     }
 
     template<typename Tstream>
@@ -96,6 +80,7 @@ public:
         w1.data.range(31, 0) = b;
         w1.last = tlast;
         out.write(w1);
+
     }
 
     template<typename Tstream>
@@ -141,4 +126,4 @@ public:
 
 };
 
-#endif // C:\USERS\SDRAN\DOCUMENTS\REPOS\HWDESIGN\FIFOIF\FIFO_FUN_VITIS\SRC\CMD_H
+#endif // CMD_H
