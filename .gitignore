@@ -36,7 +36,6 @@ hls/
 _build/
 _build.hw/
 _build.sw/
-build/
 .vscode/
 *.db
 *.pb
@@ -80,7 +79,6 @@ __pycache__/
 # Distribution artifacts
 *.egg-info/
 dist/
-build/
 
 # IDE/editor settings
 .vscode/
@@ -170,17 +168,23 @@ extra/
 ~$*.pptx
 
 # Pipeline project
-**/pipeline/hls_component/*
+**/pipeline/poly_uf*
 **/pipeline/include/*
 **/pipeline/vitis_run_out.txt
-**/pipeline/poly_proj/*
-**/stream_old/*
 
-# Pipeline project
+# Stream project
 **/stream/hls_component/*
 **/stream/include/*
 **/stream/vitis_run_out.txt
 **/stream/poly_proj/*
 **/stream_old/*
+
+# Histogram project
+**/histogram/pysilicon_hist_proj/
+**/histogram/include/
+**/histogram/logs/
+**/histogram/vcd/
+**/histogram/data/
+
 
 
