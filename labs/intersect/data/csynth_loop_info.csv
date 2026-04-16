@@ -1,0 +1,8 @@
+LoopName,PipelineII,PipelineDepth,TripCountMin,TripCountMax,LatencyMin,LatencyMax,Latency,DSP,FF,LUT,TripCount
+read_axi4_stream_impl_Pipeline_VITIS_LOOP_606_1:VITIS_LOOP_606_1,1,1,,,,,,,,,
+read_axi4_stream_impl_Pipeline_VITIS_LOOP_633_2:VITIS_LOOP_633_2,1,1,,,,,,,,,
+read_axi4_stream_impl_Pipeline_VITIS_LOOP_660_3:VITIS_LOOP_660_3,1,1,,,,,,,,,
+line_inter_Pipeline_VITIS_LOOP_323_1:VITIS_LOOP_323_1,1,2,,,,,,,,,
+compute_loop,1,62,0.0,65535.0,0.0,65595.0,362.0,57.0,6898.0,10700.0,300.0
+line_inter_Pipeline_VITIS_LOOP_380_1:VITIS_LOOP_380_1,1,2,0.0,1024.0,0.0,1024.0,,,,,
+line_inter_Pipeline_VITIS_LOOP_76_1:VITIS_LOOP_76_1,1,1,,,,,,,,,
